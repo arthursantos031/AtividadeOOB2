@@ -3,8 +3,8 @@ package Concretas;
 import Interfaces.IFormato;
 
 public class Torta extends Bolo {
-    private boolean recheio;
-    private boolean cobertura;
+    private boolean recheio = true;
+    private boolean cobertura = true;
 
     public Torta(int codigo, double custo, IFormato formato) {
         super(codigo, custo, formato);
@@ -14,14 +14,6 @@ public class Torta extends Bolo {
         super(codigo, custo, formato);
         this.recheio = recheio;
         this.cobertura = cobertura;
-    }
-
-    @Override
-    public String toString() {
-        return "Torta [codigo=" + getCodigo() + ", custo=" + getCusto() +
-                ", formato=" + (getFormato() != null ? getFormato() : "Não especificado") +
-                ", recheio=" + recheio +
-                ", cobertura=" + cobertura + "]";
     }
 
     @Override
@@ -37,4 +29,13 @@ public class Torta extends Bolo {
 
         return precoBase;
     }
+
+    @Override
+    public String toString() {
+        return "Torta [codigo=" + getCodigo() + ", custo=" + getCusto() +
+                ", formato=" + (getFormato() != null ? getFormato() : "Não especificado") +
+                ", recheio=" + recheio +
+                ", cobertura=" + cobertura + "]";
+    }
+
 }

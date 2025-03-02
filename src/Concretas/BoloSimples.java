@@ -3,24 +3,13 @@ package Concretas;
 import Interfaces.IFormato;
 
 public class BoloSimples extends Bolo {
-    private final boolean semLactose; 
+    private boolean semLactose = false;
 
     public BoloSimples(int codigo, double custo, IFormato formato) {
         super(codigo, custo, formato); 
-        this.semLactose = false;
     }
 
     public BoloSimples(int codigo, double custo, IFormato formato, boolean semLactose) {
-        super(codigo, custo, formato);
-        this.semLactose = semLactose;
-    }
-
-    public BoloSimples(boolean semLactose, int codigo, double custo) {
-        super(codigo, custo);
-        this.semLactose = semLactose;
-    }
-
-    public BoloSimples(boolean semLactose, int codigo, double custo, IFormato formato) {
         super(codigo, custo, formato);
         this.semLactose = semLactose;
     }
