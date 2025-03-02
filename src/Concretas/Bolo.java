@@ -3,18 +3,20 @@ package Concretas;
 import Interfaces.IBolo;
 import Interfaces.IFormato;
 
-import java.util.Random;
+import java.util.Objects;
 
 public abstract class Bolo implements IBolo {
     private int codigo;
     private double custo;
     private IFormato formato;
 
+    @SuppressWarnings("OverridableMethodCallInConstructor")
     public Bolo(int codigo, double custo) {
         setCodigo(codigo);
         setCusto(custo);
     }
 
+    @SuppressWarnings("OverridableMethodCallInConstructor")
     public Bolo(int codigo, double custo, IFormato formato) {
         setCodigo(codigo);
         setCusto(custo);
@@ -26,7 +28,10 @@ public abstract class Bolo implements IBolo {
     }
 
     public void setCodigo(int codigo) {
-        codigo = codigo == 0 ? new Random().nextInt(99999999) : codigo;
+    
+        if (codigo == 0) {
+            throw new IllegalArgumentException("Código não pode ser zero.");
+        }
         this.codigo = codigo;
     }
 
@@ -38,6 +43,7 @@ public abstract class Bolo implements IBolo {
         this.custo = custo;
     }
 
+  
     public IFormato getFormato() {
         return formato;
     }
@@ -55,7 +61,12 @@ public abstract class Bolo implements IBolo {
     }
 
     @Override
+    public int hashCode() {
+        return Objects.hash(codigo, custo);
+    }
+
+    @Override
     public String toString() {
-        return "Bolo [codigo= " + codigo + ", custo= " + custo + ", formato= " + formato + "]";
+        return "Bolo [codigo= " + codigo + ", custo= " + custo + ", formato= " + (formato != null ? formato : "Não especificado") + "]";
     }
 }

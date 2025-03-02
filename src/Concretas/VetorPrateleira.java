@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.stream.IntStream;
 
 public class VetorPrateleira implements IPrateleira {
-    private IBolo[] prateleira;
+    private final IBolo[] prateleira;
     private int qtdBolo;
 
     public VetorPrateleira(int capacidade) {
@@ -70,7 +70,7 @@ public class VetorPrateleira implements IPrateleira {
     public int buscar(IBolo objeto)
     {
         //LINQ -> STREAMS
-        var indice =  IntStream.range(0, qtdBolo)
+        int indice =  IntStream.range(0, qtdBolo)
                 .filter(i -> prateleira[i].equals(objeto))
                 .findFirst()
                 .orElse(-1);
@@ -116,5 +116,9 @@ public class VetorPrateleira implements IPrateleira {
                                 (tipoDoBolo == 'T' && bolo instanceof Torta)
                 ))
                 .toArray(IBolo[]::new);
+    }
+
+    public IBolo[] getPrateleira() {
+        return prateleira;
     }
 }
