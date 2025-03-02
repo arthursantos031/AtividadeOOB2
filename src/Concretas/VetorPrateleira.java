@@ -45,7 +45,6 @@ public class VetorPrateleira implements IPrateleira {
 
     @Override
     public IBolo remover(int posicao) {
-
         if (posicao < 0 || posicao >= qtdBolo || prateleira[posicao] == null) {
             throw new PersonalizedException("Bolo inexistente.", ErrorType.BOLO_NAO_ENCONTRADO);
         }
@@ -96,9 +95,7 @@ public class VetorPrateleira implements IPrateleira {
 
     @Override
     public boolean existe(IBolo objeto) {
-
         return buscar(objeto) > -1;
-
     }
 
     @Override
@@ -107,8 +104,8 @@ public class VetorPrateleira implements IPrateleira {
     }
 
     @Override
-    public IBolo[] listar(char tipoDoBolo) {
-
+    public IBolo[] listar(char tipoDoBolo)
+    {
         //LINQ -> STREAMS
         return Arrays.stream(prateleira)
                 .filter(bolo -> (

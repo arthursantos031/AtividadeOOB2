@@ -1,5 +1,7 @@
 package Concretas;
 
+import Exceptions.ErrorType;
+import Exceptions.PersonalizedException;
 import Interfaces.IBolo;
 import Interfaces.IFormato;
 
@@ -30,7 +32,7 @@ public abstract class Bolo implements IBolo {
     public void setCodigo(int codigo) {
     
         if (codigo == 0) {
-            throw new IllegalArgumentException("Código não pode ser zero.");
+            throw new PersonalizedException("Código não pode ser zero.", ErrorType.VALOR_INVALIDO);
         }
         this.codigo = codigo;
     }
