@@ -1,0 +1,9 @@
+package Exceptions;
+
+public enum DomainErrorType {
+    BOLO_JA_CADASTRADO,
+    PRATELEIRA_CHEIA,
+    BOLO_NAO_ENCONTRADO,
+    BOLO_NAO_ENCONTRADO_NA_PRATELEIRA,
+    VALOR_INVALIDO
+}
