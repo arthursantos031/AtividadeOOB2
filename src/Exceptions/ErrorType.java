@@ -1,6 +1,6 @@
 package Exceptions;
 
-public enum DomainErrorType {
+public enum ErrorType {
     BOLO_JA_CADASTRADO,
     PRATELEIRA_CHEIA,
     BOLO_NAO_ENCONTRADO,

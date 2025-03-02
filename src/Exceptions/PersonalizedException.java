@@ -1,14 +1,14 @@
 package Exceptions;
 
-public class DomainException extends RuntimeException {
-    private final DomainErrorType errorType;
+public class PersonalizedException extends RuntimeException {
+    private final ErrorType errorType;
 
-    public DomainException(String message, DomainErrorType errorType) {
+    public PersonalizedException(String message, ErrorType errorType) {
         super(message);
         this.errorType = errorType;
     }
 
-    public DomainErrorType getErrorType() {
+    public ErrorType getErrorType() {
         return errorType;
     }
 

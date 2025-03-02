@@ -1,7 +1,7 @@
 package Concretas;
 
-import Exceptions.DomainErrorType;
-import Exceptions.DomainException;
+import Exceptions.ErrorType;
+import Exceptions.PersonalizedException;
 import Interfaces.IBolo;
 import Interfaces.IPrateleira;
 
@@ -21,10 +21,10 @@ public class VetorPrateleira implements IPrateleira {
     @Override
     public boolean inserir(IBolo objeto) {
 
-        if (cheia()) throw new DomainException("A prateleira está cheia!", DomainErrorType.PRATELEIRA_CHEIA);
+        if (cheia()) throw new PersonalizedException("A prateleira está cheia!", ErrorType.PRATELEIRA_CHEIA);
 
         IntStream.range(0, qtdBolo).filter(i -> prateleira[i].equals(objeto)).forEach(i -> {
-            throw new DomainException("Bolo já cadastrado", DomainErrorType.BOLO_JA_CADASTRADO);
+            throw new PersonalizedException("Bolo já cadastrado", ErrorType.BOLO_JA_CADASTRADO);
         });
 
         prateleira[qtdBolo++] = objeto;
@@ -40,14 +40,14 @@ public class VetorPrateleira implements IPrateleira {
                 return remover(i);
             }
 
-        throw new DomainException("Bolo inexistente.", DomainErrorType.BOLO_NAO_ENCONTRADO);
+        throw new PersonalizedException("Bolo inexistente.", ErrorType.BOLO_NAO_ENCONTRADO);
     }
 
     @Override
     public IBolo remover(int posicao) {
 
         if (posicao < 0 || posicao >= qtdBolo || prateleira[posicao] == null) {
-            throw new DomainException("Bolo inexistente.", DomainErrorType.BOLO_NAO_ENCONTRADO);
+            throw new PersonalizedException("Bolo inexistente.", ErrorType.BOLO_NAO_ENCONTRADO);
         }
 
         IBolo boloRemovido = prateleira[posicao];
@@ -60,7 +60,7 @@ public class VetorPrateleira implements IPrateleira {
     public IBolo consultar(int posicao)
     {
         if (prateleira[posicao] == null) {
-            throw new DomainException("Bolo não encontrado", DomainErrorType.BOLO_NAO_ENCONTRADO);
+            throw new PersonalizedException("Bolo não encontrado", ErrorType.BOLO_NAO_ENCONTRADO);
         }
 
         return prateleira[posicao];
@@ -76,7 +76,7 @@ public class VetorPrateleira implements IPrateleira {
                 .orElse(-1);
 
         if (indice < 0){
-            throw new DomainException("O bolo não está na prateleira", DomainErrorType.BOLO_NAO_ENCONTRADO_NA_PRATELEIRA);
+            throw new PersonalizedException("O bolo não está na prateleira", ErrorType.BOLO_NAO_ENCONTRADO_NA_PRATELEIRA);
         }
 
         return indice;
